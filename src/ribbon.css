@@ -1,0 +1,44 @@
+/* .ribbon01 {}
+
+.ribbon02 {} */
+
+
+/* Other styles  */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.wrap {
+  width: 1500px;
+  height: 650px;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.ribbon {
+  position: absolute;
+}
+
+.city {
+  z-index: 100;
+}
+
+.ribbon02 {
+  top: 76px;
+}
+
+.ribbon01 {
+  top: 30px;
+}
+
+/* img.ribbon {
+  width: 150px;
+} */
+
+.city img {
+  width: 100%;
+}

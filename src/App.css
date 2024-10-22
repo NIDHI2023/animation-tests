@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@900&display=swap");
+
 .App {
   text-align: center;
 }
@@ -10,6 +12,10 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+
+  h1 {
+    animation: name-jump infinite 5s linear;
   }
 }
 
@@ -32,7 +38,234 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes name-jump {
+  25% {
+    translate: 0px 10px;
+  }
+
+  50%,
+  100% {
+    translate: 0px 0px;
+  }
+
+  75% {
+    translate: 0px -10px;
+  }
+}
+
+@keyframes scaleIn {
+  0% {
+    scale: 0.2;
+  }
+
+  85% {
+    scale: 1.1;
+  }
+
+  100% {
+    scale: 1;
+  }
+}
+
+.App-header h2 {
+  font-size: 10rem;
+  font-family: "Fira Sans", sans-serif;
+  color: #DCF2B0;
+  text-shadow: 3px 3px 0px #59C3C3;
+
+  animation-name: scaleIn, App-logo-spin;
+  animation-duration: 2s, 5s;
+  animation-fill-mode: backwards;
+  animation-timing-function: cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+
+/* qmi stuff starts here*/
+
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+body {
+  background-color: #433F55;
+  margin: 0;
+}
+
+.qmi-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  justify-content: center;
+}
+
+/* do NOT change positions or everything goes off center */
+.red-circle {
+  position: absolute;
+  top: 3em;
+  margin-top: 30px;
+}
+
+.blue-circle {
+  position: absolute;
+  margin-top: 30px;
+}
+
+/* stroke array is length of path, so circumference. recalculate if radius changes
+dashoffset is percentage to draw of the path
+*/
+.red-circle circle {
+  stroke-dashoffset: 60%;
+  stroke-dasharray: 725px;
+  fill: transparent;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+  stroke-width: 17;
+  transform: rotate(45deg);
+  stroke: #FF5A60;
+  animation: red-spin 5s 1.5s ease-in-out both;
+}
+
+.blue-circle circle {
+  stroke-dasharray: 1135px;
+  fill: transparent;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+  stroke-width: 20;
+  transform: rotate(45deg);
+  stroke: url(#blue-gradient);
+  stroke-linecap: round;
+  animation: blue-spin 4s 4.5s ease-out both;
+}
+
+/* needed weird rotating, can change if svg is uprigth instead of slanted like i have*/
+.arrow-circle {
+  position: absolute;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+  top: 20%;
+  margin-top: 30px;
+  transform: rotate(-40deg);
+  animation: spin 6s 1.5s ease-in-out both,
+    fade 0.5s 8s ease-in both;
+}
+
+.first-plus,
+.sec-plus {
+  position: absolute;
+  top: 47%;
+  left: 57%;
+  margin-top: 30px;
+}
+
+/* controls when the pluses appear/disappear. in sync w each others delays*/
+.first-plus {
+  z-index: 1;
+  animation: appear-n-grow 1.5s 9s ease-in-out both,
+    disappear 0.01s 12s linear forwards;
+}
+
+.sec-plus {
+  width: 61px;
+  height: 61px;
+  animation: disappear 12s linear backwards,
+    grow 2s 12s ease-out both;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(320deg)
+  }
+}
+
+@keyframes disappear {
+
+  0%,
+  100% {
+    opacity: 0%;
+    display: none;
+  }
+}
+
+@keyframes grow {
+  100% {
+    transform: scale(100);
+  }
+}
+
+@keyframes fade {
+  99% {
+    opacity: 0%
+  }
+
+  100% {
+    opacity: 0%;
+    display: none;
+  }
+}
+
+@keyframes appear-n-grow {
+  0% {
+    opacity: 0%;
+    transform: scale(0.5);
+  }
+
+  80% {
+    opacity: 100%;
+    transform: scale(1.2);
+  }
+
+  100% {
+    opacity: 100%;
+    transform: scale(1);
+  }
+}
+
+@keyframes red-spin {
+  30% {
+    transform: rotate(10deg);
+    stroke-dashoffset: 0%;
+  }
+
+  50% {
+    transform: rotate(10deg);
+    stroke-dashoffset: 0%;
+  }
+
+  75% {
+    transform: rotate(120deg);
+    stroke-dashoffset: 70%;
+    stroke-linecap: round;
+  }
+
+  100% {
+    stroke: url(#red-gradient);
+    transform: rotate(180deg);
+    stroke-linecap: round;
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes blue-spin {
+  0% {
+    stroke-dashoffset: 270%;
+    stroke-opacity: 0%;
+  }
+
+  100% {
+    stroke-opacity: 100%;
+    stroke-dashoffset: 25%;
+    transform: rotate(60deg);
   }
 }

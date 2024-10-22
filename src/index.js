@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import App from './App';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <h1> The package is:</h1>
+//     </div>
+//   );
+// }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App name="Nidhi" />
   </React.StrictMode>
 );
 
